@@ -5,13 +5,17 @@ using System.Threading.Tasks;
 
 public class changeDimensions : MonoBehaviour
 {
-    Rigidbody rb;
+    Rigidbody cube;
     // Start is called before the first frame update
+    public GameObject cube_1;
+    public GameObject cube_2;
+    public GameObject cube_3;
+    public GameObject cube_4;
 
     float t;  
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        cube = GetComponent<Rigidbody>();
         t = 0;
     }
 
@@ -19,11 +23,19 @@ public class changeDimensions : MonoBehaviour
     void Update()
     {
         //Random random = new Random();
-        int y = Random.Range(2, 5);
+        int cube_scale = Random.Range(2, 5);
+        int cube_1_scale = Random.Range(2, 5);
+        int cube_2_scale = Random.Range(2, 5);
+        int cube_3_scale = Random.Range(2, 5);
+        int cube_4_scale = Random.Range(2, 5);
         Debug.Log(Time.time - t);
         if(Time.time - t > 1)
         {
-            rb.transform.localScale = new Vector3(1, y, 0.2f);
+            cube.transform.localScale = new Vector3(1, cube_scale, 0.2f);
+            cube_1.transform.localScale = new Vector3(1, cube_1_scale, 0.2f);
+            cube_2.transform.localScale = new Vector3(1, cube_2_scale, 0.2f);
+            cube_3.transform.localScale = new Vector3(1, cube_3_scale, 0.2f);
+            cube_4.transform.localScale = new Vector3(1, cube_4_scale, 0.2f);
             t = Time.time;
         }
             
