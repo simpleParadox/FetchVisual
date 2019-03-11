@@ -14,12 +14,9 @@ public class TestConnect : MonoBehaviour
     private static readonly string endpointString = "https://simpleparadox.documents.azure.com:443/";
     private static readonly string authKeyString = "mjJ6AhqsNJzogLrQPW872NIT5JmowVomjW85GQ3m9WAFQ05IN0o2Ez3XMe0OcqWoDHJ3bXCu4JaNVkUlfhaDcA==";
     private static readonly string databaseId = "Tasks";
-
+    private static readonly string collectionId = "Items";
     DocumentClient documentClient;
-    // Start is called before the first frame update
     void Start() {
-        print("Entered Start!");
-
         try
         {
             documentClient = new DocumentClient(new Uri(endpointString), authKeyString);
@@ -33,28 +30,24 @@ public class TestConnect : MonoBehaviour
 
     private async Task TestTableConnection()
     {
-        print("Entered TestTableConnection!");
-        Database database = await documentClient.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(databaseId));
-        print("Read database");
-        if (database == null)
-        {
-            // Write code to create a database
-            print("Database does not exists!");
-        }
-        else
-        {
-            print("This is the returned database:" + database + "\n");
-        }
-        var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, "Items");
+        //Database database = await documentClient.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(databaseId));
+        //if (database == null)
+        //{
+        //    Write code to create a database
+        //    print("Database does not exists!");
+        //}
+        //else
+        //{
+        //    print("This is the returned database:" + database + "\n");
+        //}
+        var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
         var response = await documentClient.ReadDocumentFeedAsync(collectionLink);
-        print(response);
         foreach (var doc in response)
         {
             print(doc);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
