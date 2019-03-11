@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
+using System;
 using Microsoft.Azure.Documents.Linq;
 using System.Linq;
 
@@ -19,6 +19,7 @@ public class TestConnect : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         print("Entered Start!");
+
         try
         {
             documentClient = new DocumentClient(new Uri(endpointString), authKeyString);
@@ -35,7 +36,7 @@ public class TestConnect : MonoBehaviour
         print("Entered TestTableConnection!");
         Database database = await documentClient.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(databaseId));
         print("Read database");
-        if(database == null)
+        if (database == null)
         {
             // Write code to create a database
             print("Database does not exists!");
@@ -44,17 +45,13 @@ public class TestConnect : MonoBehaviour
         {
             print("This is the returned database:" + database + "\n");
         }
-    }
-
-    private async Task<List<Strength>> TestToListAsync(IMobileServiceTable<Strength> table)
-    {
-        
-        var allEntries = await table.ToListAsync();
-        foreach(var item in allEntries)
+        var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, "Items");
+        var response = await documentClient.ReadDocumentFeedAsync(collectionLink);
+        print(response);
+        foreach (var doc in response)
         {
-            Debug.Log(item.Category);
+            print(doc);
         }
-        return allEntries;
     }
 
     // Update is called once per frame
