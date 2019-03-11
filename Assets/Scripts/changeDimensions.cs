@@ -23,19 +23,22 @@ public class changeDimensions : MonoBehaviour
     void Update()
     {
         //Random random = new Random();
-        int cube_scale = Random.Range(2, 5);
-        int cube_1_scale = Random.Range(2, 5);
-        int cube_2_scale = Random.Range(2, 5);
-        int cube_3_scale = Random.Range(2, 5);
-        int cube_4_scale = Random.Range(2, 5);
-        Debug.Log(Time.time - t);
+        int n = 3;
+        float cube_scale = Random.Range(2, n) * 0.1f;
+        /*
+        float cube_1_scale = Random.Range(2, n) * 0.1f;
+        float cube_2_scale = Random.Range(2, n) * 0.1f;
+        float cube_3_scale = Random.Range(2, n) * 0.1f;
+        float cube_4_scale = Random.Range(2, n) * 0.1f;
+        */
+        //Debug.Log(Time.time - t);
         if(Time.time - t > 1)
         {
-            cube.transform.localScale = new Vector3(1, cube_scale, 0.2f);
-            cube_1.transform.localScale = new Vector3(1, cube_1_scale, 0.2f);
-            cube_2.transform.localScale = new Vector3(1, cube_2_scale, 0.2f);
-            cube_3.transform.localScale = new Vector3(1, cube_3_scale, 0.2f);
-            cube_4.transform.localScale = new Vector3(1, cube_4_scale, 0.2f);
+            cube.transform.localScale = new Vector3(cube_scale, cube_scale, cube_scale);
+            /*cube_1.transform.localScale = new Vector3(cube_1_scale, cube_1_scale, cube_1_scale);
+            cube_2.transform.localScale = new Vector3(cube_2_scale, cube_2_scale, cube_2_scale);
+            cube_3.transform.localScale = new Vector3(cube_3_scale, cube_3_scale, cube_3_scale);
+            cube_4.transform.localScale = new Vector3(cube_4_scale, cube_4_scale, cube_4_scale);*/
             t = Time.time;
         }
             

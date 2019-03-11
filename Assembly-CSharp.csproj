@@ -298,6 +298,9 @@
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>U:/Unity Projects/FetchVisual/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.DocumentDB.Core">
+      <HintPath>U:/Unity Projects/FetchVisual/Assets/Microsoft.Azure.DocumentDB.Core.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
     </Reference>
