@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/Chart and Graph/Themes/3d/Graph/Theme 1/preset 1.unity
   isLoaded: 1
   isActive: 1

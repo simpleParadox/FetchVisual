@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using System;
 using Microsoft.Azure.Documents.Linq;
 using System.Linq;
+using System.Runtime;
 
 public class TestConnect : MonoBehaviour
 {
