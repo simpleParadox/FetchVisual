@@ -41,11 +41,17 @@ public class TestConnect : MonoBehaviour
         //    print("This is the returned database:" + database + "\n");
         //}
         var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
-        var response = await documentClient.ReadDocumentFeedAsync(collectionLink);
-        foreach (var doc in response)
-        {
-            print(doc);
-        }
+        //var response = await documentClient.ReadDocumentFeedAsync(collectionLink);
+        //foreach (var doc in response)
+        //{
+        //    print(doc);
+        //}
+
+        // Trying out new things.
+        print("Initiating sql query!");
+        var response = documentClient.CreateDocumentQuery(collectionLink, "SELECT TOP 1 c.name,c.category FROM c ORDER BY c._ts DESC").ToList();
+        var document = response.First();
+        print(document);
     }
 
     void Update()
